@@ -8,11 +8,14 @@ export async function GET() {
     await dbConnect();
     const settings = await Setting.find().sort({ group: 1, key: 1 });
     
-    // Convert to key-value object for easier use - FIXED VERSION
-    const settingsObject = settings.reduce<Record<string, any>>((acc, setting) => {
-      acc[setting.key] = setting.value;
-      return acc;
-    }, {});
+    // SIMPLE APPROACH - use forEach instead of reduce
+    const settingsObject: Record<string, any> = {};
+    
+    // Loop through settings and build object
+    for (let i = 0; i < settings.length; i++) {
+      const setting = settings[i];
+      settingsObject[setting.key] = setting.value;
+    }
     
     return NextResponse.json(settingsObject);
   } catch (error) {
