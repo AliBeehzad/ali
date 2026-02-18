@@ -1,0 +1,95 @@
+{
+  "common": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "careers": "Careers",
+    "contact": "Contact",
+    "admin": "Admin",
+    "adminLogin": "Admin Login",
+    "industrialGroup": "Industrial Group",
+    "loading": "Loading services...",
+    "viewAll": "View All Services",
+    "learnMore": "Learn More",
+    "construction": "Construction",
+    "logistics": "Logistics",
+    "electricity": "Electricity",
+    "mining": "Mining"
+  },
+  "hero": {
+    "welcome": "Welcome to",
+    "subtitle": "Your trusted partner in Construction, Logistics, Electricity, and Mining services",
+    "ourServices": "Our Services",
+    "contactUs": "Contact Us"
+  },
+  "services": {
+    "title": "Our Services",
+    "construction": "Construction",
+    "logistics": "Logistics",
+    "electricity": "Electricity",
+    "mining": "Mining",
+    "constructionDesc": "Professional construction services for industrial and commercial projects.",
+    "logisticsDesc": "Reliable logistics and transportation solutions for heavy equipment.",
+    "electricityDesc": "Industrial electrical installations and maintenance services.",
+    "miningDesc": "Comprehensive mining services and support operations."
+  },
+  "whyChooseUs": {
+    "title": "Why Choose STRATERRA",
+    "experience": "15+ Years Experience",
+    "experienceDesc": "Delivering excellence in industrial services since 2010",
+    "expertTeam": "Expert Team",
+    "expertTeamDesc": "Skilled professionals with industry-leading expertise",
+    "safetyFirst": "Safety First",
+    "safetyFirstDesc": "Strict safety protocols on every project"
+  },
+  "stats": {
+    "projectsCompleted": "Projects Completed",
+    "happyClients": "Happy Clients",
+    "teamMembers": "Team Members",
+    "yearsExperience": "Years Experience"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with our team for consultations and quotes",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "phone": "Phone Number",
+      "service": "Service Interested In",
+      "message": "Your Message",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Message Sent!",
+      "successMessage": "Thank you for contacting us. We'll get back to you soon.",
+      "sendAnother": "Send Another Message"
+    },
+    "info": {
+      "title": "Contact Information",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "email": "Email",
+      "address": "Address",
+      "chat": "Chat on WhatsApp",
+      "viewMap": "View on Google Maps"
+    }
+  },
+  "cta": {
+    "title": "Ready to Start Your Project?",
+    "subtitle": "Contact us today for a free consultation and quote. Our team is ready to help you with your next project.",
+    "button": "Get in Touch"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "sitemap": "Sitemap"
+  },
+  "buttons": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit"
+  }
+}
