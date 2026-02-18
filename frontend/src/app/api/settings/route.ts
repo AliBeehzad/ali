@@ -8,10 +8,10 @@ export async function GET() {
     await dbConnect();
     const settings = await Setting.find().sort({ group: 1, key: 1 });
     
-    // SIMPLE APPROACH - use forEach instead of reduce
+    // ULTRA SIMPLE APPROACH - no complex types
     const settingsObject: Record<string, any> = {};
     
-    // Loop through settings and build object
+    // Simple for loop that TypeScript understands
     for (let i = 0; i < settings.length; i++) {
       const setting = settings[i];
       settingsObject[setting.key] = setting.value;
