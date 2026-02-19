@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useLocale } from 'next-intl';
 
 export default function AdminLoginPage() {
   const router = useRouter();
+  const locale = useLocale(); // ✅ current locale
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -25,9 +27,12 @@ export default function AdminLoginPage() {
       const data = await res.json();
 
       if (res.ok) {
+        // Save token and user info
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
-        router.push('/admin/dashboard');
+
+        // ✅ Correct redirect with locale
+        router.push(`/${locale}/admin/dashboard`);
       } else {
         setError(data.error || 'Login failed');
       }
@@ -42,7 +47,7 @@ export default function AdminLoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
         <h1 className="text-2xl font-bold mb-6 text-center">Admin Login</h1>
-        
+
         {error && (
           <div className="bg-red-100 text-red-700 p-3 rounded mb-4">
             {error}
