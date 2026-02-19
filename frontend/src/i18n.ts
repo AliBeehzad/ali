@@ -5,24 +5,25 @@ export const defaultLocale = 'en' as const;
 export type Locale = (typeof locales)[number];
 
 export default getRequestConfig(async ({ requestLocale }) => {
-  // requestLocale comes from middleware
-  let locale = requestLocale;
+  // Validate locale - fallback to default if invalid
+  const validLocale: Locale =
+    requestLocale && locales.includes(requestLocale as Locale)
+      ? (requestLocale as Locale)
+      : defaultLocale;
 
-  // If locale is missing or invalid → fallback to default
-  if (!locale || !locales.includes(locale as Locale)) {
-    locale = defaultLocale;
-  }
-
+  // Load messages
   try {
+    const messages = (await import(`./messages/${validLocale}.json`)).default;
     return {
-      locale,
-      messages: (await import(`./messages/${locale}.json`)).default
+      locale: validLocale,  // must be string
+      messages,
     };
-  } catch (error) {
-    console.error(`Failed to load messages for ${locale}, falling back to en`);
+  } catch (err) {
+    console.error(`Failed to load messages for ${validLocale}, falling back to en`);
+    const messages = (await import(`./messages/en.json`)).default;
     return {
       locale: defaultLocale,
-      messages: (await import(`./messages/en.json`)).default
+      messages,
     };
   }
 });
