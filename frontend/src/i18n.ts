@@ -5,17 +5,19 @@ export const defaultLocale = 'en' as const;
 export type Locale = (typeof locales)[number];
 
 export default getRequestConfig(async ({ requestLocale }) => {
+  // await requestLocale because it may be a Promise
+  const localeStr = await requestLocale;
+
   // Validate locale - fallback to default if invalid
-  const validLocale: Locale =
-    requestLocale && locales.includes(requestLocale as Locale)
-      ? (requestLocale as Locale)
-      : defaultLocale;
+  const validLocale: Locale = localeStr && locales.includes(localeStr as Locale)
+    ? (localeStr as Locale)
+    : defaultLocale;
 
   // Load messages
   try {
     const messages = (await import(`./messages/${validLocale}.json`)).default;
     return {
-      locale: validLocale,  // must be string
+      locale: validLocale,
       messages,
     };
   } catch (err) {
