@@ -9,18 +9,21 @@ const intlMiddleware = createMiddleware({
 });
 
 export default function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
+  try {
+    const pathname = request.nextUrl.pathname;
 
-  // Redirect root "/" to default language
-  if (pathname === '/') {
-    return NextResponse.redirect(new URL(`/${defaultLocale}`, request.url));
+    // If user visits root "/", redirect to default language
+    if (pathname === '/') {
+      return NextResponse.redirect(new URL(`/${defaultLocale}`, request.url));
+    }
+
+    return intlMiddleware(request);
+  } catch (err) {
+    console.error('Middleware failed:', err);
+    return new NextResponse('Internal Server Error', { status: 500 });
   }
-
-  // Let next-intl handle the rest
-  return intlMiddleware(request);
 }
 
-// Apply middleware to all routes except api, _next/static, images, favicon
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico|images|uploads).*)']
 };
